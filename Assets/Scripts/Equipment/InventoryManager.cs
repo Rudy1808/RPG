@@ -17,10 +17,4 @@ public class InventoryManager : MonoBehaviour
         inventory.EquipWeapon(0);
         inventory.DescribeInventory();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
