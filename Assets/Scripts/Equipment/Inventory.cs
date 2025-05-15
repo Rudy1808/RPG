@@ -6,10 +6,10 @@ public class Inventory
 {
     private List<Item> InventoryList = new List<Item>();
     static private int inventoryLimit = 10;
-    static private int accesoryLimit = 3;
+    static private int accessoryLimit = 3;
     private Weapon weaponSlot;
     private Armor armorSlot;
-    private Accesory[] AcessoryList = new Accesory[accesoryLimit];
+    private Accessory[] AccessoryList = new Accessory[accessoryLimit];
 
     public void AddItem(Item item)
     {
@@ -132,7 +132,7 @@ public class Inventory
             Debug.Log("Slot pusty podczas unequipowania");
         }
     }
-    public void EquipAccesory(int itemNumber, int slotNumber)
+    public void EquipAccessory(int itemNumber, int slotNumber)
     {
         //sprawdzenie zgodnoœci indeksu
         if (itemNumber < 0 || itemNumber >= InventoryList.Count)
@@ -142,24 +142,24 @@ public class Inventory
         }
 
         //sprawdzenie zgodnoœci numeru slotu
-        if (slotNumber < 0 || slotNumber >= accesoryLimit)
+        if (slotNumber < 0 || slotNumber >= accessoryLimit)
         {
             Debug.Log("Nieprawid³owy numer slotu akcesoriów");
             return;
         }
 
 
-        if (InventoryList[itemNumber] is Accesory accesory)
+        if (InventoryList[itemNumber] is Accessory accesory)
         {
             //Usuwanie akcesoria z listy
             InventoryList.RemoveAt(itemNumber);
 
             //Zapisanie starego akcesoria w liœcie pomocniczej
-            Accesory oldAccessory = AcessoryList[slotNumber];
+            Accessory oldAccessory = AccessoryList[slotNumber];
 
             //Zapisanie accesoria w slocie i wywa³anie funkcji equip
-            AcessoryList[slotNumber] = accesory;
-            AcessoryList[slotNumber].OnEquip();
+            AccessoryList[slotNumber] = accesory;
+            AccessoryList[slotNumber].OnEquip();
 
             if (oldAccessory != null)
             {
@@ -169,17 +169,17 @@ public class Inventory
         }
         else
         {
-            Debug.Log("To nie accesory");
+            Debug.Log("To nie accessory");
         }
     }
-    public void UnequipAccesory(int slotNumber)
+    public void UnequipAccessory(int slotNumber)
     {
-        if (AcessoryList[slotNumber] != null)
+        if (AccessoryList[slotNumber] != null)
         {
             if (InventoryList.Count < inventoryLimit)
             {
-                AddItem(AcessoryList[slotNumber]);
-                AcessoryList[slotNumber] = null;
+                AddItem(AccessoryList[slotNumber]);
+                AccessoryList[slotNumber] = null;
             }
             else
             {
@@ -193,11 +193,11 @@ public class Inventory
     }
     public void DescribeInventory()
     {
-        Debug.Log($"Weapon : {weaponSlot.name}");
-        Debug.Log($"Armor : {armorSlot.name}");
-        Debug.Log($"Accesory1 {AcessoryList[0].name}");
-        Debug.Log($"Accesory2 {AcessoryList[1].name}");
-        Debug.Log($"Accesory3 {AcessoryList[2].name}");
+        Debug.Log($"Weapon : {weaponSlot?.name}");
+        Debug.Log($"Armor : {armorSlot?.name}");
+        Debug.Log($"Accessory1 {AccessoryList[0]?.name}");
+        Debug.Log($"Accessory2 {AccessoryList[1]?.name}");
+        Debug.Log($"Accessory3 {AccessoryList[2]?.name}");
         Debug.Log("InventoryList : ");
 
         foreach (Item item in InventoryList)

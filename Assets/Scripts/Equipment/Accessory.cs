@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Accesory:Item
+public class Accessory:Item
 {
     public virtual void OnEquip()
     {
