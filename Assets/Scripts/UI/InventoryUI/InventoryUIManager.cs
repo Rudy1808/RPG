@@ -3,35 +3,48 @@ using UnityEngine.UIElements;
 
 public class InventoryUIManager : MonoBehaviour
 {
+    //Elementy UI
     private VisualElement mainUI;
-    private ListView myListView;
+    private ListView InvItemList;
 
-    private string[] items = { "Item 1", "Item 2", "Item 3" };
+    private InventoryManager inventoryManager;
 
     private void OnEnable()
     {
+        
+
+        //Wczytanie ekwipunku
+        GameObject playerGO = GameObject.Find("Player");
+        inventoryManager = playerGO.GetComponent<InventoryManager>();
+
+        //Wczytanie i wyszukiwanie elementów UI
         var root = GetComponent<UIDocument>().rootVisualElement;
 
         mainUI = root.Q<VisualElement>("root");  // Szuka elementu o name="root"
-        myListView = root.Q<ListView>("InventoryListDisplay");  // Szuka ListView o name="InventoryListDisplay"
+        InvItemList = root.Q<ListView>("InventoryListDisplay");  // Szuka ListView o name="InventoryListDisplay"
 
-        // Inicjalizacja listy (bardzo wa¿ne, ¿eby lista mia³a dane)
-        myListView.itemsSource = items;
-        myListView.makeItem = () => new Label();
-        myListView.bindItem = (element, index) =>
+        InvItemList.itemsSource = inventoryManager.playerInv.InventoryList;
+        InvItemList.makeItem = () => new Label();
+        InvItemList.bindItem = (element, index) =>
         {
-            (element as Label).text = items[index];
+            if (inventoryManager.playerInv.InventoryList[index] == null)
+            {
+                (element as Label).text = "empty";
+            }
+            else
+            {
+                (element as Label).text = inventoryManager.playerInv.InventoryList[index].name;
+            }
+            
         };
 
-        myListView.Rebuild();
 
-        // Na start mo¿esz ukryæ UI, jeœli chcesz:
         mainUI.visible = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.C)==true)
         {
             ToggleUIVisibility();
             Debug.Log("naciœniêto");
@@ -41,7 +54,17 @@ public class InventoryUIManager : MonoBehaviour
     private void ToggleUIVisibility()
     {
         mainUI.visible = !mainUI.visible;
-        myListView.Rebuild();
+
+        ExampleWeapon exampleWeapon = new ExampleWeapon();
+        inventoryManager.playerInv.InventoryList.Add(exampleWeapon);
+
+        RefreshInventoryUI();
         
+    }
+    public void RefreshInventoryUI()
+    {
+        InvItemList.itemsSource = null;
+        InvItemList.itemsSource = inventoryManager.playerInv.InventoryList;
+        InvItemList.Rebuild();
     }
 }
