@@ -7,7 +7,7 @@ public class ExampleWeapon:Weapon
         ID = 1;
         name = "ExampleSword";
         description = "Miecz";
-        atack = 15.5f;
+        atack = 0f;
     }
     public override void OnEquip()
     {

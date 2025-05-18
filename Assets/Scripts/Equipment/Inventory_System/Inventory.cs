@@ -7,9 +7,9 @@ public class Inventory
     public List<Item> InventoryList = new List<Item>();
     static private int inventoryLimit = 10;
     static private int accessoryLimit = 3;
-    private Weapon weaponSlot;
-    private Armor armorSlot;
-    private Accessory[] AccessoryList = new Accessory[accessoryLimit];
+    public Weapon weaponSlot;
+    public Armor armorSlot;
+    public Accessory[] AccessoryList = new Accessory[accessoryLimit];
 
     public void AddItem(Item item)
     {

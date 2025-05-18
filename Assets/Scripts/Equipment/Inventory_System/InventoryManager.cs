@@ -11,8 +11,16 @@ public class InventoryManager : MonoBehaviour
     }
     void Start()
     {
-        ExampleWeapon exampleWeapon = new ExampleWeapon();
-        playerInv.AddItem(exampleWeapon);
-        
+
+        ExampleWeapon exampleWeapon1 = new ExampleWeapon();
+        ExampleArmor exampleArmor = new ExampleArmor();
+
+        playerInv.AddItem(exampleArmor);
+        playerInv.AddItem(exampleWeapon1);
+
+
+        playerInv.EquipArmor(0);
+        playerInv.EquipWeapon(0);
+
     }
 }

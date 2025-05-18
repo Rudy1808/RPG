@@ -9,6 +9,10 @@
 
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement class="container">
+            <ui:VisualElement class = "label-container">
+                <ui:Label name = "WeaponDisplay"/>
+                <ui:Label name = "ArmorDisplay"/>
+            </ui:VisualElement>
             <ui:ListView name="InventoryListDisplay"/>
         </ui:VisualElement>
     </ui:VisualElement>
