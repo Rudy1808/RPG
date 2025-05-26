@@ -11,6 +11,7 @@ public class InventoryUIManager : MonoBehaviour
     private Label WeaponDisplay;
 
     private InventoryManager inventoryManager;
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -33,26 +34,62 @@ public class InventoryUIManager : MonoBehaviour
 
         };
 
+        InvItemList.selectedIndex = 0;
 
         mainUI.visible = false;
 
-        Refreash();
+        Refresh();
     }
 
     private void Update()
     {
+        //Wyœwietlenie
         if (Input.GetKeyDown(KeyCode.C) == true)
         {
             ToggleUIVisibility();
         }
+
+        ////Sterowanie
+        //    //Strza³ka w dó³
+        //if (Input.GetKeyDown(KeyCode.S) == true)
+        //{
+        //    // wybrany index = (wybrany index ++) % D³ugoœ listy
+        //    InvItemList.selectedIndex = Mathf.Clamp(InvItemList.selectedIndex+1, 0, InvItemList.itemsSource.Count - 1);
+        //}
+
+        //    //Strza³ka w góre
+        //if (Input.GetKeyDown(KeyCode.W) == true)
+        //{
+        //    // wybrany index = (wybrany index ++) % D³ugoœ listy
+        //    InvItemList.selectedIndex = Mathf.Clamp(InvItemList.selectedIndex-1, 0, InvItemList.itemsSource.Count - 1);
+
+        //}
+            //Wybranie przedmiotu
+        if (Input.GetKeyDown(KeyCode.Z) == true)
+        {
+            if (inventoryManager.playerInv.InventoryList[InvItemList.selectedIndex] is Weapon)
+            {
+                inventoryManager.playerInv.EquipWeapon(InvItemList.selectedIndex);
+                Refresh();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.X) == true)
+        {
+            inventoryManager.playerInv.RemoveItem(InvItemList.selectedIndex);
+            Refresh();
+        }
+
+
     }
 
     private void ToggleUIVisibility()
     {
         mainUI.visible = !mainUI.visible;
-        Refreash();
+        playerMovement.enabled = !playerMovement.enabled;
+        Refresh();
     }
-    private void Refreash()
+    private void Refresh()
     {
         var inv = inventoryManager.playerInv;
 
@@ -82,6 +119,13 @@ public class InventoryUIManager : MonoBehaviour
         if (inventoryManager == null)
         {
             Debug.LogError("Brak komponentu InventoryManager na obiekcie Player");
+            return;
+        }
+
+        playerMovement = playerGO.GetComponent<PlayerMovement>();
+        if (playerMovement == null)
+        {
+            Debug.LogError("Brak komponentu PlayerMovement na obiekcie Player");
             return;
         }
 

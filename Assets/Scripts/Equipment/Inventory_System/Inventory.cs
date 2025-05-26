@@ -26,6 +26,12 @@ public class Inventory
     {
         InventoryList.Remove(item);
     }
+    
+    public void RemoveItem(int index)
+    {
+        InventoryList.RemoveAt(index);
+    }
+
     public void EquipWeapon(int itemNumber)
     {
         //sprawdzenie zgodnoœci indeksu
@@ -56,7 +62,7 @@ public class Inventory
         }
         else
         {
-            Debug.Log("To nie armor");
+            Debug.Log("To nie weapon");
             return;
         }
     }
