@@ -4,6 +4,14 @@ using UnityEngine;
 public class DoorMenager : MonoBehaviour
 {
     // gracz
+    private Transform player;
+    private PlayerMovement playerMovement;
+    private void Start()
+    {
+        GameObject Player = GameObject.FindWithTag("Player");
+        player = Player.transform;
+        playerMovement = Player.GetComponent<PlayerMovement>();
+    }
     private enum Direction {
         Null,
         Up,
@@ -25,16 +33,32 @@ public class DoorMenager : MonoBehaviour
     } 
 
     [SerializeField] private Transform innerDoor;
-    [SerializeField] private Direction _innerMoveDirction;
+    [SerializeField] private Direction _innerMoveDirection;
     private Vector2 InnerMoveDirection
     {
-        get => DirectionToVector2(_innerMoveDirction);    
+        get => DirectionToVector2(_innerMoveDirection);    
     }
 
     [SerializeField] private Transform exitDoor;
-    [SerializeField] private Direction _exitMoveDirction;
+    [SerializeField] private Direction _exitMoveDirection;
     private Vector2 ExitMoveDirection
     {
-        get => DirectionToVector2(_exitMoveDirction);
+        get => DirectionToVector2(_exitMoveDirection);
+    }
+
+    private void Update()
+    {
+        if(player.position == innerDoor.position)
+        {
+            player.position = exitDoor.position;
+            if(!playerMovement.isMoving)
+                StartCoroutine(playerMovement.Move(ExitMoveDirection));
+        }
+        else if (player.position == exitDoor.position)
+        {
+            player.position = innerDoor.position;
+            if(!playerMovement.isMoving)
+                StartCoroutine(playerMovement.Move(InnerMoveDirection));
+        }
     }
 }

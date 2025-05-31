@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class Stats : MonoBehaviour
 {
@@ -14,7 +14,9 @@ public class Stats : MonoBehaviour
             _hp = Mathf.Clamp(value, 0, maxHP);
             if (_hp == 0)
             {
-                //œmieræ            
+                //œmieræ
+                //prosze dodaæ funkcje œmieræ.
+               
             }
 
         }
@@ -25,7 +27,7 @@ public class Stats : MonoBehaviour
 
     //expirience
     public int expToNextLevel { get; private set; } = 1000;
-    public int level { get; private set; } = 0;
+    public int level { get; private set; } = 1;
 
     [SerializeField] private int expGrowRate = 500;
     private int _exp = 0;
