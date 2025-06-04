@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,14 +11,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
+
         if (!isMoving)
         {
             input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
             if (input.x != 0) input.y = 0;
 
-            if (input != Vector2.zero)
+            if (input != Vector2.zero && !IsColliderAhead())
             {
                 StartCoroutine(Move());
             }
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator Move()
     {
-        
+
         isMoving = true;
 
         float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed;
@@ -69,4 +70,23 @@ public class PlayerMovement : MonoBehaviour
         transform.position = endPosition;
         isMoving = false;
     }
+
+    private bool IsColliderAhead()
+    {
+        Vector3 targetPosition = transform.position + (Vector3)input;
+        Collider2D hit = Physics2D.OverlapBox(targetPosition, new Vector2(0.8f, 0.8f), 0f);
+
+        return hit != null;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (input != Vector2.zero)
+        {
+            Vector3 targetPos = transform.position + (Vector3)input;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(targetPos, new Vector2(0.8f, 0.8f));
+        }
+    }
+
 }
