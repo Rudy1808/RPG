@@ -1,148 +1,67 @@
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class InventoryUIManager : MonoBehaviour
 {
-    //Elementy UI
-    private VisualElement mainUI;
-    private ListView InvItemList;
-    private Label ArmorDisplay;
-    private Label WeaponDisplay;
 
-    private InventoryManager inventoryManager;
-    private PlayerMovement playerMovement;
+    //elementy
+    public VisualElement root;
+    public VisualElement inventoryGrid;
 
+    //scalowanie
+    public int baseWidth = 640;
+    public int baseHeigh = 360;
+
+    public int scaleX;
+    public int scaleY;
+    public int scaleFactor;
+
+    private List<VisualElement> slotList = new List<VisualElement>();
+    private int slotNumber = 28;
     private void Start()
     {
-        
-        initializeUI();
-
-        //Lista przdmiotów
-        InvItemList.itemsSource = inventoryManager.playerInv.InventoryList;
-        InvItemList.makeItem = () => new Label();
-        InvItemList.bindItem = (element, index) =>
-        {
-            if (inventoryManager.playerInv.InventoryList[index] == null)
-            {
-                (element as Label).text = "empty";
-            }
-            else
-            {
-                (element as Label).text = inventoryManager.playerInv.InventoryList[index].name;
-            }
-
-        };
-
-        InvItemList.selectedIndex = 0;
-
-        mainUI.visible = false;
-
-        Refresh();
-    }
-
-    private void Update()
-    {
-        //Wyœwietlenie
-        if (Input.GetKeyDown(KeyCode.C) == true)
-        {
-            ToggleUIVisibility();
-        }
-
-        ////Sterowanie
-        //    //Strza³ka w dó³
-        //if (Input.GetKeyDown(KeyCode.S) == true)
-        //{
-        //    // wybrany index = (wybrany index ++) % D³ugoœ listy
-        //    InvItemList.selectedIndex = Mathf.Clamp(InvItemList.selectedIndex+1, 0, InvItemList.itemsSource.Count - 1);
-        //}
-
-        //    //Strza³ka w góre
-        //if (Input.GetKeyDown(KeyCode.W) == true)
-        //{
-        //    // wybrany index = (wybrany index ++) % D³ugoœ listy
-        //    InvItemList.selectedIndex = Mathf.Clamp(InvItemList.selectedIndex-1, 0, InvItemList.itemsSource.Count - 1);
-
-        //}
-            //Wybranie przedmiotu
-        if (Input.GetKeyDown(KeyCode.Z) == true)
-        {
-            if (inventoryManager.playerInv.InventoryList[InvItemList.selectedIndex] is Weapon)
-            {
-                inventoryManager.playerInv.EquipWeapon(InvItemList.selectedIndex);
-                Refresh();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.X) == true)
-        {
-            inventoryManager.playerInv.RemoveItem(InvItemList.selectedIndex);
-            Refresh();
-        }
-
+        InitializeUI();
+        BuildInventoryGrid();
+        ScalingUI();
 
     }
-
-    private void ToggleUIVisibility()
+    private void InitializeUI()
     {
-        mainUI.visible = !mainUI.visible;
-        playerMovement.enabled = !playerMovement.enabled;
-        Refresh();
+        root = GetComponent<UIDocument>()?.rootVisualElement;
+        inventoryGrid = root.Q<VisualElement>("InventoryGrid");
+
+        if (inventoryGrid == null)
+        {
+            Debug.LogError("Brak VisualElement o nazwie 'InventoryGrid'");
+        }
+    }
+    private void ScalingUI()
+    {
+        scaleX = Screen.width / baseWidth;
+        scaleY = Screen.height / baseHeigh;
+
+        scaleFactor = math.min(scaleX, scaleY);
+
+        root.style.width = baseWidth;
+        root.style.height = baseHeigh;
+        root.style.scale = new Scale(new Vector2(scaleFactor,scaleFactor));
+
+    }
+    private void BuildInventoryGrid()
+    {
+        for (int i = 0; i < slotNumber; i++)
+        {
+            var slot = new VisualElement();
+            slot.AddToClassList("slot");
+            inventoryGrid.Add(slot);
+            slotList.Add(slot);
+        }
     }
     private void Refresh()
     {
-        var inv = inventoryManager.playerInv;
 
-        WeaponDisplay.text = inv.weaponSlot != null
-            ? $"Weapon : {inv.weaponSlot.name}"
-            : "Weapon : empty";
-
-        ArmorDisplay.text = inv.armorSlot != null
-            ? $"Armor : {inv.armorSlot.name}"
-            : "Armor : empty";
-
-        InvItemList.Rebuild();
     }
-
-    private void initializeUI()
-    {
-        //Wczytanie i sprawdzenie czy gracz istnieje
-        GameObject playerGO = GameObject.Find("Player");
-        if (playerGO == null)
-        {
-            Debug.LogError("Nie znaleziono GameObject 'Player'");
-            return;
-        }
-
-        //sprawdzenie czy inventoryManager istnieje w playerze
-        inventoryManager = playerGO?.GetComponent<InventoryManager>();
-        if (inventoryManager == null)
-        {
-            Debug.LogError("Brak komponentu InventoryManager na obiekcie Player");
-            return;
-        }
-
-        playerMovement = playerGO.GetComponent<PlayerMovement>();
-        if (playerMovement == null)
-        {
-            Debug.LogError("Brak komponentu PlayerMovement na obiekcie Player");
-            return;
-        }
-
-        //Dodatkowe sprawdznie czy gracz ma utworzony ekwipunek
-        if (inventoryManager.playerInv == null)
-        {
-            Debug.LogError("playerInv jest null");
-            return;
-        }
-
-        //Wczytanie i wyszukiwanie elementów UI
-        var root = GetComponent<UIDocument>().rootVisualElement;
-
-        mainUI = root?.Q<VisualElement>("root");  // Szuka elementu o name="root"
-        InvItemList = root?.Q<ListView>("InventoryListDisplay");  // Szuka ListView o name="InventoryListDisplay"
-        ArmorDisplay = root?.Q<Label>("ArmorDisplay");
-        WeaponDisplay = root?.Q<Label>("WeaponDisplay");
-    }
-
 }
