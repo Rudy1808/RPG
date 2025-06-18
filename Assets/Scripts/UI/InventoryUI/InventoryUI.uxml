@@ -8,15 +8,19 @@
     <ui:Style src="../MainStyle.uss" />
 
     <ui:VisualElement name="root" class="root">
-        <ui:VisualElement class="container-main">
-            <ui:VisualElement class ="container-bars">
-            </ui:VisualElement>            
-            <ui:VisualElement class ="container-slots">
-                <ui:VisualElement name = "InventoryGrid" class = "inventory-grid">
-                </ui:VisualElement>
+       <ui:VisualElement class = "container-left">
+            <ui:VisualElement class = "equipment-grid">
+
             </ui:VisualElement>
-            <ui:VisualElement class ="container-stats"></ui:VisualElement>
-        </ui:VisualElement>
+
+            <ui:VisualElement class = "item-info">
+
+            </ui:VisualElement>
+       </ui:VisualElement>
+
+       <ui:VisualElement class = "container-right">
+
+       </ui:VisualElement>
     </ui:VisualElement>
 
 </ui:UXML>
