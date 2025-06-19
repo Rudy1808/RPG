@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isMoving { get; private set; } = false;
     private Vector2 input;
 
+
+    [SerializeField] private Animator animator;
     void Update()
     {
 
@@ -26,9 +28,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator Move()
     {
-
+         
         isMoving = true;
-
+        animator.SetBool("isMoving", true);
+        animator.SetFloat("moveX", input.x);
+        animator.SetFloat("moveY", input.y);
         float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed;
         float duration = 1f / currentSpeed;
 
@@ -46,17 +50,21 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = endPosition;
         isMoving = false;
+        animator.SetBool("isMoving", false);
     }
-    public IEnumerator Move(Vector2 rotation)
+    public IEnumerator Move(Vector2 direction)
     {
 
         isMoving = true;
+        animator.SetBool("isMoving", true);
+        animator.SetFloat("moveX", direction.x);
+        animator.SetFloat("moveY", direction.y);
 
         float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed;
         float duration = 1f / currentSpeed;
 
         Vector3 startPosition = transform.position;
-        Vector3 endPosition = startPosition + (Vector3)rotation;
+        Vector3 endPosition = startPosition + (Vector3)direction;
 
         float elapsedTime = 0f;
 
@@ -69,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = endPosition;
         isMoving = false;
+        animator.SetBool("isMoving", false);
     }
 
     private bool IsColliderAhead()
