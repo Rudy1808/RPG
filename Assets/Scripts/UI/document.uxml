@@ -4,7 +4,6 @@
     xmlns:ui="UnityEngine.UIElements"
     xmlns:uie="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
-
 >
     <ui:Style src="style.uss"/>
     <ui:VisualElement name="root" class="root">

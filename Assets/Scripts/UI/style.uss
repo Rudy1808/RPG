@@ -3,7 +3,7 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	height: 360px;
-	background-color: black;
+	background-color: blue;
 }
 .left{
 	width: 256px;
