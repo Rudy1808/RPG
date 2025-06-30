@@ -3,16 +3,43 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	height: 360px;
-	background-color: blue;
 }
 .left{
 	width: 256px;
 	height: 360px;
+}
+.slot-panel{
+	width: 256px;
+	height: 280px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	background-color: brown;
+	align-items: center;
+	justify-content: center;
+}
+.slot-grid{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.slot-inspector{
+	width: 256px;
+	height: 80px;
 	background-color: green;
 }
 .right{
 	width: 384px;
 	height: 360px;
-	background-color: red;
-	
+	background-color: blue;
+}
+.slot{
+	width: 40px;
+	height: 40px;
+	margin: 2px;
+	background-color: black;
+}
+.selected-slot{
+	background-color: white;
 }

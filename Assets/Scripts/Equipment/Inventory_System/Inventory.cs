@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Inventory
 {
     public List<Item> InventoryList = new List<Item>();
-    static private int inventoryLimit = 10;
+    static private int inventoryLimit = 30;
     static private int accessoryLimit = 3;
     public Weapon weaponSlot;
     public Armor armorSlot;
