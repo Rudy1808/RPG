@@ -23,12 +23,21 @@ public class UIscript : MonoBehaviour
     public UIDocument uiDocument;
     private VisualElement slotGrid;
     private VisualElement root;
-    void Start()
+
+    //Logika inventory
+    private InventoryManager inventory;
+
+    private void Awake()
     {
         elementLoad();
+    }
+
+    void Start()
+    {
         createSlotGrid();
-        root.style.visibility = Visibility.Visible;
+        root.style.visibility = Visibility.Hidden;
         SelectSlot(0);
+        LoadIcons();
     }
 
     // Update is called once per frame
@@ -38,7 +47,14 @@ public class UIscript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
 
-            root.style.visibility = Visibility.Hidden;
+            if (root.style.visibility == Visibility.Hidden)
+            {
+                root.style.visibility = Visibility.Visible;
+            }
+            else
+            {
+                root.style.visibility = Visibility.Hidden;
+            }
         }
 
         // Poruszanie siê po gridzie
@@ -53,15 +69,36 @@ public class UIscript : MonoBehaviour
         for (int i = 0; i <gridColumn*gridRow; i++)
         {
             VisualElement slot = new VisualElement();
+            VisualElement icon = new VisualElement();
+            VisualElement frame = new VisualElement();
             slot.AddToClassList("slot");
+            icon.AddToClassList("slot-icon");
+            frame.AddToClassList("slot-frame");
             slotGrid.Add(slot);
+            slot.Add(icon);
+            slot.Add(frame);
             slotList.Add(slot);
+        }
+    }
+    void LoadIcons()
+    {
+        var inv = inventory.playerInv;
+        for (int i = 0; i < inv.ItemList.Count; i++)
+        {
+            slotList[i].Q(className: "slot-icon").style.backgroundImage = new StyleBackground(inv.ItemList[i].Icon);
+            Debug.Log("Podmieniam");
+        }
+        Debug.Log(inv.ItemList.Count);
+        if (inv.ItemList[0].Icon != null) 
+        {
+            Debug.Log("Dzia³a");
         }
     }
     void elementLoad()
     {
+        //UI
         if(uiDocument == null)
-    {
+        {
             Debug.LogError("Brak przypisanego UIDocument!");
             return;
         }
@@ -81,6 +118,17 @@ public class UIscript : MonoBehaviour
             Debug.LogError("Nie znaleziono elementu 'slot-grid' w UIDocument!");
             return;
         }
+
+        //Skrypty
+        GameObject player = GameObject.Find("Player");
+        inventory = player.GetComponent<InventoryManager>();
+
+        if (inventory == null)
+        {
+            Debug.LogError("Nie znaleziono inventory manager");
+            return;
+        }
+
     }
     void SelectSlot(int index)
     {

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class Inventory
 {
-    public List<Item> InventoryList = new List<Item>();
-    static private int inventoryLimit = 30;
+    public List<Item> ItemList = new List<Item>();
+    public int inventoryLimit = 30;
     static private int accessoryLimit = 3;
     public Weapon weaponSlot;
     public Armor armorSlot;
@@ -13,9 +13,9 @@ public class Inventory
 
     public void AddItem(Item item)
     {
-        if (InventoryList.Count < inventoryLimit)
+        if (ItemList.Count < inventoryLimit)
         {
-            InventoryList.Add(item);
+            ItemList.Add(item);
         }
         else
         {
@@ -24,27 +24,27 @@ public class Inventory
     }
     public void RemoveItem(Item item)
     {
-        InventoryList.Remove(item);
+        ItemList.Remove(item);
     }
     
     public void RemoveItem(int index)
     {
-        InventoryList.RemoveAt(index);
+        ItemList.RemoveAt(index);
     }
 
     public void EquipWeapon(int itemNumber)
     {
         //sprawdzenie zgodnoœci indeksu
-        if (itemNumber < 0 || itemNumber >= InventoryList.Count)
+        if (itemNumber < 0 || itemNumber >= ItemList.Count)
         {
             Debug.Log("Nieprawid³owy indeks");
             return;
         }
 
-        if (InventoryList[itemNumber] is Weapon weapon)
+        if (ItemList[itemNumber] is Weapon weapon)
         {
             // Usuwamy now¹ broñ z listy
-            InventoryList.RemoveAt(itemNumber);
+            ItemList.RemoveAt(itemNumber);
 
             // Zmienna pomocnicza na star¹ broñ
             Weapon oldWeapon = weaponSlot;
@@ -70,7 +70,7 @@ public class Inventory
     {
         if(weaponSlot != null)
         {
-            if (InventoryList.Count < inventoryLimit)
+            if (ItemList.Count < inventoryLimit)
             {
                 AddItem(weaponSlot);
                 weaponSlot=null;
@@ -88,16 +88,16 @@ public class Inventory
     public void EquipArmor(int itemNumber)
     {
         //sprawdzenie zgodnoœci indeksu
-        if (itemNumber < 0 || itemNumber >= InventoryList.Count)
+        if (itemNumber < 0 || itemNumber >= ItemList.Count)
         {
             Debug.Log("Nieprawid³owy indeks");
             return;
         }
 
-        if (InventoryList[itemNumber] is Armor armor)
+        if (ItemList[itemNumber] is Armor armor)
         {
             // Usuwamy nowy pancerz z listy
-            InventoryList.RemoveAt(itemNumber);
+            ItemList.RemoveAt(itemNumber);
 
             // Zmienna pomocnicza na stary pancerz
             Armor oldArmor = armorSlot;
@@ -123,7 +123,7 @@ public class Inventory
     {
         if (armorSlot != null)
         {
-            if (InventoryList.Count < inventoryLimit)
+            if (ItemList.Count < inventoryLimit)
             {
                 AddItem(armorSlot);
                 armorSlot = null;
@@ -141,7 +141,7 @@ public class Inventory
     public void EquipAccessory(int itemNumber, int slotNumber)
     {
         //sprawdzenie zgodnoœci indeksu
-        if (itemNumber < 0 || itemNumber >= InventoryList.Count)
+        if (itemNumber < 0 || itemNumber >= ItemList.Count)
         {
             Debug.Log("Nieprawid³owy indeks");
             return;
@@ -155,10 +155,10 @@ public class Inventory
         }
 
 
-        if (InventoryList[itemNumber] is Accessory accesory)
+        if (ItemList[itemNumber] is Accessory accesory)
         {
             //Usuwanie akcesoria z listy
-            InventoryList.RemoveAt(itemNumber);
+            ItemList.RemoveAt(itemNumber);
 
             //Zapisanie starego akcesoria w liœcie pomocniczej
             Accessory oldAccessory = AccessoryList[slotNumber];
@@ -182,7 +182,7 @@ public class Inventory
     {
         if (AccessoryList[slotNumber] != null)
         {
-            if (InventoryList.Count < inventoryLimit)
+            if (ItemList.Count < inventoryLimit)
             {
                 AddItem(AccessoryList[slotNumber]);
                 AccessoryList[slotNumber] = null;
@@ -206,7 +206,7 @@ public class Inventory
         Debug.Log($"Accessory3 {AccessoryList[2]?.name}");
         Debug.Log("InventoryList : ");
 
-        foreach (Item item in InventoryList)
+        foreach (Item item in ItemList)
         {
             Debug.Log(item.name);
         }

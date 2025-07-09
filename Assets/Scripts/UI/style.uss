@@ -35,10 +35,30 @@
 	background-color: blue;
 }
 .slot{
+	position:relative;
 	width: 40px;
 	height: 40px;
 	margin: 2px;
-	background-color: black;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+.slot-frame{
+	position:absolute;
+	inset:0;
+	width: 40px;
+	height: 40px;
+	z-index:10;
+	background-image: url("UITextures/itemFrame.png");
+	background-repeat: no-repeat; 
+	background-size: cover;
+}
+
+.slot-icon{
+	position:relative;
+	width: 32px;
+	height: 32px;
 }
 .selected-slot{
 	background-color: white;
