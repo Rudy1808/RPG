@@ -6,8 +6,9 @@ public class ExampleArmor:Armor
     {
         ID = 1;
         name = "ExampleArmor";
-        description = "Zbroja";
+        description = "";
         def = 0f;
+        Icon = Resources.Load<Texture2D>("itemIcons/TestItemIcon");
     }
     public override void OnEquip()
     {

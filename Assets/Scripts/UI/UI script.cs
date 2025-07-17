@@ -10,6 +10,7 @@ public class UIscript : MonoBehaviour
     [SerializeField] private int gridColumn = 5;
     private List<VisualElement> slotList = new List<VisualElement>();
     private VisualElement selectedSlot;
+
     private enum SelectionMoveDirection
     {
         Up,
@@ -23,18 +24,20 @@ public class UIscript : MonoBehaviour
     public UIDocument uiDocument;
     private VisualElement slotGrid;
     private VisualElement root;
+    private Label nameLabel;
+    private Label descriptionLabel;
 
     //Logika inventory
     private InventoryManager inventory;
 
     private void Awake()
     {
-        elementLoad();
+        ElementLoad();
     }
 
     void Start()
     {
-        createSlotGrid();
+        CreateSlotGrid();
         root.style.visibility = Visibility.Hidden;
         SelectSlot(0);
         LoadIcons();
@@ -47,14 +50,13 @@ public class UIscript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
 
-            if (root.style.visibility == Visibility.Hidden)
-            {
-                root.style.visibility = Visibility.Visible;
-            }
-            else
-            {
-                root.style.visibility = Visibility.Hidden;
-            }
+            ToggleUI();
+        }
+
+        //Equipowanie Z
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            EquipSelectedSlot();
         }
 
         // Poruszanie siê po gridzie
@@ -63,8 +65,30 @@ public class UIscript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow)) SelectionMove(SelectionMoveDirection.Left);
         if (Input.GetKeyDown(KeyCode.RightArrow)) SelectionMove(SelectionMoveDirection.Right);
     }
+    void Refresh()
+    {
+        //Clearujemy wszystkie bagroundy w UI
+        for (int i = 0; i < gridColumn * gridRow; i++)
+        {
+            slotList[i].Q(className: "slot-icon").style.backgroundImage = null;
+        }
 
-    void createSlotGrid()
+        //£adujemy Icony do UI spowrotem
+        LoadIcons();
+    }
+    void ToggleUI()
+    {
+        if (root.style.visibility == Visibility.Hidden)
+        {
+            root.style.visibility = Visibility.Visible;
+        }
+        else
+        {
+            root.style.visibility = Visibility.Hidden;
+        }
+        Refresh();
+    }
+    void CreateSlotGrid()
     {
         for (int i = 0; i <gridColumn*gridRow; i++)
         {
@@ -86,15 +110,9 @@ public class UIscript : MonoBehaviour
         for (int i = 0; i < inv.ItemList.Count; i++)
         {
             slotList[i].Q(className: "slot-icon").style.backgroundImage = new StyleBackground(inv.ItemList[i].Icon);
-            Debug.Log("Podmieniam");
-        }
-        Debug.Log(inv.ItemList.Count);
-        if (inv.ItemList[0].Icon != null) 
-        {
-            Debug.Log("Dzia³a");
         }
     }
-    void elementLoad()
+    void ElementLoad()
     {
         //UI
         if(uiDocument == null)
@@ -115,7 +133,21 @@ public class UIscript : MonoBehaviour
 
         if (slotGrid == null)
         {
-            Debug.LogError("Nie znaleziono elementu 'slot-grid' w UIDocument!");
+            Debug.LogError("Nie znaleziono elementu 'slot-grid' w UI"   );
+            return;
+        }
+
+        nameLabel = root.Q<Label>("label-name");
+        if (nameLabel == null)
+        {
+            Debug.LogError("Nie znaleziono elementu 'label-name' w UI");
+            return;
+        }
+
+        descriptionLabel = root.Q<Label>("label-description");
+        if (descriptionLabel == null)
+        {
+            Debug.LogError("Nie znaleziono elementu 'label-description' w UI");
             return;
         }
 
@@ -130,13 +162,49 @@ public class UIscript : MonoBehaviour
         }
 
     }
+    void EquipSelectedSlot()
+    {
+        var inv = inventory.playerInv;
+        int index = slotList.IndexOf(selectedSlot);
+
+        // SprawdŸ, czy indeks jest w zakresie listy itemów
+        if (index < 0 || index >= inv.ItemList.Count)
+        {
+            return;
+        }
+
+        var item = inv.ItemList[index];
+
+        if (item is Weapon)
+        {
+            inv.EquipWeapon(index);
+        }
+        else if (item is Armor)
+        {
+            inv.EquipArmor(index);
+        }
+
+        Refresh();
+    }
     void SelectSlot(int index)
     {
         if (selectedSlot != null)
             selectedSlot.RemoveFromClassList("selected-slot");
+            if (index >= 0 && index < inventory.playerInv.ItemList.Count)
+            {
+                nameLabel.text = inventory.playerInv.ItemList[index].name;
+                descriptionLabel.text = inventory.playerInv.ItemList[index].description;
+            }
+            else
+            {
+                nameLabel.text = "";
+                descriptionLabel.text = "";
+            }
 
         selectedSlot = slotList[index];
         selectedSlot.AddToClassList("selected-slot");
+
+
 
     }
     void SelectionMove(SelectionMoveDirection direction)

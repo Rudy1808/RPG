@@ -8,6 +8,7 @@ public class ExampleWeapon:Weapon
         name = "ExampleSword";
         description = "Miecz";
         atack = 0f;
+        Icon = Resources.Load<Texture2D>("itemIcons/TestItemIcon");
     }
     public override void OnEquip()
     {

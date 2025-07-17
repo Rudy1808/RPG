@@ -8,12 +8,14 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         playerInv = new Inventory();
-        for (int i=0; i < 10; i++)
-        {
-            TestItem testItem = new TestItem();
 
-            playerInv.AddItem(testItem);
-        }
+        ExampleArmor armor = new ExampleArmor();
+
+        playerInv.AddItem(armor);
+
+        ExampleWeapon weapon = new ExampleWeapon();
+
+        playerInv.AddItem(weapon);
     }
     void Start()
     {
