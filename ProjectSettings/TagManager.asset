@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Terrain_down
+    uniqueID: 3609592487
+    locked: 0
+  - name: Terrain_up
+    uniqueID: 2939521457
+    locked: 0
+  - name: GameplayLayer
+    uniqueID: 2395249855
+    locked: 0
+  m_RenderingLayers:
+  - Default
