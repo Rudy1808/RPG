@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 StartCoroutine(Move());
             }
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
         }
     }
     private IEnumerator Move()
@@ -50,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = endPosition;
         isMoving = false;
-        animator.SetBool("isMoving", false);
     }
     public IEnumerator Move(Vector2 direction)
     {

@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 735014d24181c154489bede9ab5bc795
+guid: 9bf09d105e5826247a9fbfe5fb41ee0c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -329781629681332959
-    second: glowna_postac_a (2)_0
-  - first:
-      213: 6110372382768855782
-    second: glowna_postac_a (2)_1
-  - first:
-      213: -2321946139450048212
-    second: glowna_postac_a (2)_2
-  - first:
-      213: -3574870652136262139
-    second: glowna_postac_a (2)_3
+      213: 2320784556515155381
+    second: gp_a_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glowna_postac_a (2)_0
+      name: gp_a_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 0
-        width: 23
-        height: 61
+        width: 18
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,74 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12d0565ea516c6bf0800000000000000
-      internalID: -329781629681332959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: glowna_postac_a (2)_1
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 0
-        width: 24
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6ea7b48de476cc450800000000000000
-      internalID: 6110372382768855782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: glowna_postac_a (2)_2
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 0
-        width: 24
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c218d72d94ac6cfd0800000000000000
-      internalID: -2321946139450048212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: glowna_postac_a (2)_3
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 0
-        width: 23
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 506f2751512836ec0800000000000000
-      internalID: -3574870652136262139
+      spriteID: 5bd5c431245153020800000000000000
+      internalID: 2320784556515155381
       vertices: []
       indices: 
       edges: []
@@ -210,10 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      glowna_postac_a (2)_0: -329781629681332959
-      glowna_postac_a (2)_1: 6110372382768855782
-      glowna_postac_a (2)_2: -2321946139450048212
-      glowna_postac_a (2)_3: -3574870652136262139
+      gp_a_0: 2320784556515155381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

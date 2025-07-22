@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 0bc09f6ed7259d048927ee9ad2cada60
+guid: 06ed8084c17182f4899d5c7b8e3ce260
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8512484413204513802
-    second: glowna_postac_d (1)_0
+      213: 1301163438374822042
+    second: gp_b_animacja_0
   - first:
-      213: 3643242485323013170
-    second: glowna_postac_d (1)_1
+      213: -6423785141261184826
+    second: gp_b_animacja_1
   - first:
-      213: 7020423760302044076
-    second: glowna_postac_d (1)_2
+      213: 4417573126388507083
+    second: gp_b_animacja_2
   - first:
-      213: 1948050196855623561
-    second: glowna_postac_d (1)_3
+      213: -6140963912057903140
+    second: gp_b_animacja_3
+  - first:
+      213: -351178159354692692
+    second: gp_b_animacja_4
+  - first:
+      213: -6376439959302650150
+    second: gp_b_animacja_5
+  - first:
+      213: -8588185268299888578
+    second: gp_b_animacja_6
+  - first:
+      213: -5582969721204888821
+    second: gp_b_animacja_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,12 +121,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glowna_postac_d (1)_0
+      name: gp_b_animacja_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 23
+        width: 24
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a90ae0bd049ae0210800000000000000
+      internalID: 1301163438374822042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gp_b_animacja_1
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 0
+        width: 22
         height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,20 +158,64 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6fb35eaf6849dd980800000000000000
-      internalID: -8512484413204513802
+      spriteID: 6c0d1bdd2712ad6a0800000000000000
+      internalID: -6423785141261184826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowna_postac_d (1)_1
+      name: gp_b_animacja_2
       rect:
         serializedVersion: 2
-        x: 37
+        x: 84
+        y: 0
+        width: 21
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc1e2b76a5f5e4d30800000000000000
+      internalID: 4417573126388507083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gp_b_animacja_3
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 0
+        width: 21
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd7ab43bbd9e6caa0800000000000000
+      internalID: -6140963912057903140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gp_b_animacja_4
+      rect:
+        serializedVersion: 2
+        x: 160
         y: 0
         width: 24
-        height: 61
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,19 +224,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 23c1a48dcb56f8230800000000000000
-      internalID: 3643242485323013170
+      spriteID: cabb9ce135d502bf0800000000000000
+      internalID: -351178159354692692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowna_postac_d (1)_2
+      name: gp_b_animacja_5
       rect:
         serializedVersion: 2
-        x: 75
+        x: 202
         y: 0
-        width: 24
+        width: 22
         height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -168,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca3f385d63e8d6160800000000000000
-      internalID: 7020423760302044076
+      spriteID: ad6c82e04a55287a0800000000000000
+      internalID: -6376439959302650150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glowna_postac_d (1)_3
+      name: gp_b_animacja_6
       rect:
         serializedVersion: 2
-        x: 113
+        x: 242
         y: 0
         width: 23
-        height: 61
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +268,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 98f8534355dd80b10800000000000000
-      internalID: 1948050196855623561
+      spriteID: e380eb92003a0d880800000000000000
+      internalID: -8588185268299888578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gp_b_animacja_7
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 0
+        width: 24
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b22df4e9e4582b0800000000000000
+      internalID: -5582969721204888821
       vertices: []
       indices: 
       edges: []
@@ -210,10 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      glowna_postac_d (1)_0: -8512484413204513802
-      glowna_postac_d (1)_1: 3643242485323013170
-      glowna_postac_d (1)_2: 7020423760302044076
-      glowna_postac_d (1)_3: 1948050196855623561
+      gp_b_animacja_0: 1301163438374822042
+      gp_b_animacja_1: -6423785141261184826
+      gp_b_animacja_2: 4417573126388507083
+      gp_b_animacja_3: -6140963912057903140
+      gp_b_animacja_4: -351178159354692692
+      gp_b_animacja_5: -6376439959302650150
+      gp_b_animacja_6: -8588185268299888578
+      gp_b_animacja_7: -5582969721204888821
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
