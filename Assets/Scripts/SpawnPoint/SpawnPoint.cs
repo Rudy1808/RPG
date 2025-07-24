@@ -2,19 +2,16 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public Transform player;
-    [SerializeField] private int distance;
+    [SerializeField] private Transform player;
+    [SerializeField] private float distance = 2f;
 
     void Update()
     {
-        Vector2Int playerGridPos = Vector2Int.RoundToInt(player.position);
-        Vector2Int myGridPos = Vector2Int.RoundToInt(transform.position);
-
-        if (Mathf.Abs(playerGridPos.x - myGridPos.x) <= distance && Mathf.Abs(playerGridPos.y - myGridPos.y) <= distance)
+        if(Mathf.Abs(player.position.x - transform.position.x) <= distance && Mathf.Abs(player.position.y - transform.position.y) <= distance)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                SaveSystem.SavePlayer(playerGridPos);
+                SaveSystem.SavePlayer(Vector2Int.RoundToInt(player.position));
             }
         }
     }
