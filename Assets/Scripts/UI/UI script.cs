@@ -213,13 +213,13 @@ public class UIscript : MonoBehaviour
         switch (direction)
         {
             case SelectionMoveDirection.Up:
-                if ((index - gridRow) >= 0)
-                    SelectSlot(index - gridRow);
+                if (index - gridColumn >= 0)
+                    SelectSlot(index - gridColumn);
                 break;
 
             case SelectionMoveDirection.Down:
-                if((index+gridRow) < slotList.Count)
-                    SelectSlot(index+gridRow);
+                if((index+gridColumn) < slotList.Count)
+                    SelectSlot(index+gridColumn);
                 break;
 
             case SelectionMoveDirection.Left:
