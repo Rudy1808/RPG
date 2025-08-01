@@ -3,18 +3,24 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    Inventory inventory;
+    public Inventory playerInv;
 
     private void Awake()
     {
-        inventory = new Inventory();
+        playerInv = new Inventory();
+
+        ExampleArmor armor = new ExampleArmor();
+
+        playerInv.AddItem(armor);
+
+        ExampleWeapon weapon = new ExampleWeapon();
+
+        playerInv.AddItem(weapon);
     }
     void Start()
     {
-        ExampleWeapon ExampleWeapon = new ExampleWeapon();
-        inventory.AddItem(ExampleWeapon);
-        inventory.DescribeInventory();
-        inventory.EquipWeapon(0);
-        inventory.DescribeInventory();
+
+        
+       
     }
 }

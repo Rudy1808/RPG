@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class ExampleWeapon:Weapon
+public class ExampleArmor:Armor
 {
-    public ExampleWeapon()
+    public ExampleArmor()
     {
         ID = 1;
-        name = "ExampleSword";
-        description = "Miecz";
-        atack = 0f;
+        name = "ExampleArmor";
+        description = "";
+        def = 0f;
         Icon = Resources.Load<Texture2D>("itemIcons/TestItemIcon");
     }
     public override void OnEquip()
     {
-        Debug.Log($"{name} zosta³ wyposa¿ony. Atak: {atack}");
+        Debug.Log($"{name} zosta³ wyposa¿onu. Obrona: {def}");
     }
 
     public override void OnUnequip()
@@ -20,5 +20,3 @@ public class ExampleWeapon:Weapon
         Debug.Log($"{name} zosta³ zdjêty.");
     }
 }
-    
-

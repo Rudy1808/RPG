@@ -1,0 +1,75 @@
+.root{
+	width: 640px;
+	flex-direction: row;
+	justify-content: flex-start;
+	height: 360px;
+}
+.left{
+	width: 256px;
+	height: 360px;
+}
+.slot-panel{
+	width: 256px;
+	height: 280px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	background-color: brown;
+	align-items: center;
+	justify-content: center;
+}
+.slot-grid{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.slot-inspector{
+	width: 256px;
+	height: 80px;
+	background-color: green;
+	padding:1px;
+}
+.label-name{
+	font-size:12px;
+	margin:0;
+
+}
+.label-description{
+	font-size:8px;
+	margin:0;
+}
+.right{
+	width: 384px;
+	height: 360px;
+	background-color: blue;
+}
+.slot{
+	position:relative;
+	width: 40px;
+	height: 40px;
+	margin: 2px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+.slot-frame{
+	position:absolute;
+	inset:0;
+	width: 40px;
+	height: 40px;
+	z-index:10;
+	background-image: url("UITextures/itemFrame.png");
+	background-repeat: no-repeat; 
+	background-size: cover;
+}
+
+.slot-icon{
+	position:relative;
+	width: 32px;
+	height: 32px;
+}
+.selected-slot{
+	background-color: white;
+}
