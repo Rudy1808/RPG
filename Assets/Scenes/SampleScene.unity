@@ -12314,6 +12314,73 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &408891473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408891476}
+  - component: {fileID: 408891475}
+  - component: {fileID: 408891474}
+  m_Layer: 5
+  m_Name: UIDocument
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &408891474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408891473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e100898ebe65d49a313378fced7e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridRow: 6
+  gridColumn: 5
+  uiDocument: {fileID: 408891475}
+--- !u!114 &408891475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408891473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 8f19b781e910c164dacd91bef2794c51, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: cfdea4cc368f8a1468424d1c9766716a, type: 3}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!4 &408891476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408891473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &503146178
 GameObject:
   m_ObjectHideFlags: 0
@@ -13313,6 +13380,7 @@ GameObject:
   - component: {fileID: 2090404856}
   - component: {fileID: 2090404857}
   - component: {fileID: 2090404858}
+  - component: {fileID: 2090404859}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -13456,6 +13524,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76afa996b560b04eb7fb4252db405d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2090404859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090404851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28864305aba21f94da3179486b720757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2138038396
 GameObject:
   m_ObjectHideFlags: 0
@@ -13563,3 +13643,4 @@ SceneRoots:
   - {fileID: 1656985034}
   - {fileID: 1718671079}
   - {fileID: 916995489}
+  - {fileID: 408891476}
