@@ -1,22 +1,20 @@
-using Unity.Collections;
+using System.ComponentModel;
 using UnityEngine;
 
 public enum ItemType
 {
-    Weapon,
-    Armor,
     Consumable,
+    Weapon,
+    Armor
 }
-
-[CreateAssetMenu(fileName = "New Item", menuName = "Items/Item")]
 
 public abstract class Itemm : ScriptableObject
 {
-    [ReadOnly] public int id;
-    public ItemType type;
+    public int id;
     public new string name;
     public Sprite sprite;
     public int stackSize;
     public string description;
+    public abstract ItemType type { get; }
 
 }

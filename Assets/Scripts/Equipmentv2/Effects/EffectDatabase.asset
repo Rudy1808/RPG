@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e9f4d5d80bc634ca0cb9f96da9ceae, type: 3}
-  m_Name: New Weapon 1
+  m_Script: {fileID: 11500000, guid: ea661fbadd355da4ba567f41ac9f322f, type: 3}
+  m_Name: EffectDatabase
   m_EditorClassIdentifier: 
-  id: 0
-  type: 0
-  name: 
-  sprite: {fileID: 0}
-  stackSize: 0
-  description: 
-  attack: 0
+  effects: []

@@ -1,12 +1,12 @@
 using UnityEngine;
 
 
-public class Stats : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
     //base stats
-    public float maxHP = 100f;
-    private float _hp = 100f;
-    public float HP
+    public int maxHP = 100;
+    private int _hp = 100;
+    public int HP
     {
         get => _hp;
         set
@@ -21,9 +21,9 @@ public class Stats : MonoBehaviour
 
         }
     }
-    public float attack;
-    public float defence;
-    public float agility;
+    public int attack;
+    public int defence;
+    public int agility;
 
     //expirience
     public int expToNextLevel { get; private set; } = 1000;
