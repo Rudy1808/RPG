@@ -3,7 +3,6 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	height: 360px;
-	visibility: hidden;
 }
 .left{
 	width: 256px;
