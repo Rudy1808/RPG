@@ -49,7 +49,6 @@ public class UIscript : MonoBehaviour
         // Prze³¹cz widocznoœæ C
         if (Input.GetKeyDown(KeyCode.C))
         {
-
             ToggleUI();
         }
 
@@ -78,13 +77,14 @@ public class UIscript : MonoBehaviour
     }
     void ToggleUI()
     {
-        if (root.style.visibility == Visibility.Hidden)
+        var panel = root.Q<VisualElement>("root");
+        if (panel.style.visibility == Visibility.Hidden)
         {
-            root.style.visibility = Visibility.Visible;
+            panel.style.visibility = Visibility.Visible;
         }
         else
         {
-            root.style.visibility = Visibility.Hidden;
+            panel.style.visibility = Visibility.Hidden;
         }
         Refresh();
     }
