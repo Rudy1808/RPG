@@ -53,17 +53,20 @@ public class UIscript : MonoBehaviour
             ToggleUI();
         }
 
-        //Equipowanie Z
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (root.style.visibility == Visibility.Visible)
         {
-            EquipSelectedSlot();
-        }
+            //Equipowanie Z
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                EquipSelectedSlot();
+            }
 
-        // Poruszanie siê po gridzie
-        if (Input.GetKeyDown(KeyCode.UpArrow)) SelectionMove(SelectionMoveDirection.Up);
-        if (Input.GetKeyDown(KeyCode.DownArrow)) SelectionMove(SelectionMoveDirection.Down);
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) SelectionMove(SelectionMoveDirection.Left);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) SelectionMove(SelectionMoveDirection.Right);
+            // Poruszanie siê po gridzie
+            if (Input.GetKeyDown(KeyCode.UpArrow)) SelectionMove(SelectionMoveDirection.Up);
+            if (Input.GetKeyDown(KeyCode.DownArrow)) SelectionMove(SelectionMoveDirection.Down);
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) SelectionMove(SelectionMoveDirection.Left);
+            if (Input.GetKeyDown(KeyCode.RightArrow)) SelectionMove(SelectionMoveDirection.Right);
+        }
     }
     void Refresh()
     {
