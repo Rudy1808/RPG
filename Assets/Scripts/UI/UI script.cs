@@ -30,6 +30,7 @@ public class UIscript : MonoBehaviour
     //Logika inventory
     private InventoryManager inventory;
 
+    private bool uiVisible = false;
     private void Awake()
     {
         ElementLoad();
@@ -52,7 +53,7 @@ public class UIscript : MonoBehaviour
             ToggleUI();
         }
 
-        if (root.style.visibility == Visibility.Visible)
+        if (uiVisible)
         {
             //Equipowanie Z
             if (Input.GetKeyDown(KeyCode.Z))
@@ -81,6 +82,7 @@ public class UIscript : MonoBehaviour
     void ToggleUI()
     {
         var panel = root.Q<VisualElement>("root");
+        uiVisible = !uiVisible;
         if (panel.style.visibility == Visibility.Hidden)
         {
             panel.style.visibility = Visibility.Visible;

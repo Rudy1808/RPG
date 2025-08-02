@@ -73,3 +73,16 @@
 .selected-slot{
 	background-color: white;
 }
+.interact-bar{
+	width: 640px;
+	height: 80px;
+	background-color:black;
+	position : absolute;
+	bottom : 0;
+	padding : 5px;
+}
+.interact-text{
+	font-size: 10px;
+	color:white;
+	white-space: normal;
+}
