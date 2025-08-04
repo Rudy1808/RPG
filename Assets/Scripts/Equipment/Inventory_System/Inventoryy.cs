@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Inventory
+public class Inventoryy
 {
     public List<Item> ItemList = new List<Item>();
     public int inventoryLimit = 30;

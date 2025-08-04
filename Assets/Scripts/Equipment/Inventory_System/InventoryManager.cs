@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Inventory playerInv;
+    public Inventoryy playerInv;
 
     private void Awake()
     {
-        playerInv = new Inventory();
+        playerInv = new Inventoryy();
 
         ExampleArmor armor = new ExampleArmor();
 
