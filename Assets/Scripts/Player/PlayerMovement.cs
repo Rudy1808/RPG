@@ -20,9 +20,17 @@ public class PlayerMovement : MonoBehaviour
 
             if (input.x != 0) input.y = 0;
 
-            if (input != Vector2.zero && !IsColliderAhead())
+            if (input != Vector2.zero)
             {
-                StartCoroutine(Move());
+                if (!IsColliderAhead())
+                {
+                    StartCoroutine(Move());
+                }
+                else if (new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY")) != input)
+                {
+                    animator.SetFloat("moveX", input.x);
+                    animator.SetFloat("moveY", input.y);
+                }
             }
             else
             {
