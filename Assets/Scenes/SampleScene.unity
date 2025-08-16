@@ -12568,15 +12568,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.10775511
+    y: 0.10950488
+    width: 0.7836735
+    height: 0.78062886
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 6.6584754
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -13481,6 +13481,7 @@ GameObject:
   - component: {fileID: 2090404857}
   - component: {fileID: 2090404858}
   - component: {fileID: 2090404859}
+  - component: {fileID: 2090404860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -13636,6 +13637,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28864305aba21f94da3179486b720757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2090404860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090404851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded5c9b8e44fb3e41b05ee333c3ff77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotListLimit: 30
+  accesoryListLimit: 3
 --- !u!1 &2138038396
 GameObject:
   m_ObjectHideFlags: 0

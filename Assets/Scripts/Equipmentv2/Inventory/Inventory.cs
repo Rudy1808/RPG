@@ -25,13 +25,19 @@ public class Inventory : MonoBehaviour
     {
         slotList.Remove(item);
     }
-
+    public void DescribeInventory()
+    {
+        foreach(Slot item in slotList)
+        {
+            Debug.Log(item.item.name);
+        }
+    }
     private void Start()
     {
         Slot slot = new Slot();
         slot.Amount = 1;
+        slot.item = ItemDatabase.getItemByName("Apple");
         AddItem(slot);
+        DescribeInventory();
     }
-
-
 }
