@@ -9,7 +9,10 @@ public class ItemDatabase : ScriptableObject
 
     public static Itemm getItemByName(string name)
     {
-        return items.Find(item => item.name == name);
+        Itemm item = items.Find(item => item.name == name);
+        if (item == null)
+            Debug.LogError("Nie znaleziono itema o nazwie {name}");
+        return item;
     }
 #if UNITY_EDITOR
 
