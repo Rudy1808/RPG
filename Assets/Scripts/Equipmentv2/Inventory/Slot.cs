@@ -2,6 +2,6 @@ using UnityEngine;
 
 public class Slot
 {
-    public ScriptableObject item;
+    public Itemm item;
     public int Amount;
 }

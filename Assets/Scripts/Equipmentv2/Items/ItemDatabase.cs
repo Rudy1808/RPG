@@ -5,11 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Items/ItemDatabase")]
 public class ItemDatabase : ScriptableObject
 {
-    public static List<Itemm> items;
+    public List<Itemm> items;
+
+    public static ItemDatabase _instance;
+    public static ItemDatabase Instance 
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = Resources.Load<ItemDatabase>("ItemDatabase");
+            return _instance;
+        }
+    }
 
     public static Itemm getItemByName(string name)
     {
-        Itemm item = items.Find(item => item.name == name);
+        Itemm item = Instance.items.Find(item => item.name == name);
         if (item == null)
             Debug.LogError("Nie znaleziono itema o nazwie {name}");
         return item;
