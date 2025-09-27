@@ -22,22 +22,22 @@ public class ItemDatabase : ScriptableObject
     {
         Itemm item = Instance.items.Find(item => item.name == name);
         if (item == null)
-            Debug.LogError("Nie znaleziono itema o nazwie {name}");
+            Debug.LogError($"Nie znaleziono itema o nazwie {name}");
         return item;
     }
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
 
-    [ContextMenu("AutoIncrement")]
-    private void AutoIncrement()
-    {
-        for (int i = 0; i < items.Count; i++)
-        {
-            items[i].id = i;
-            EditorUtility.SetDirty(items[i]);
-        }
-        EditorUtility.SetDirty(this);
-        AssetDatabase.SaveAssets();
-    }
-#endif
+//    [ContextMenu("AutoIncrement")]
+//    private void AutoIncrement()
+//    {
+//        for (int i = 0; i < items.Count; i++)
+//        {
+//            items[i].id = i;
+//            EditorUtility.SetDirty(items[i]);
+//        }
+//        EditorUtility.SetDirty(this);
+//        AssetDatabase.SaveAssets();
+//    }
+//#endif
 }

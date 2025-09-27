@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5678f36e87af14c9c215a37da70d33, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  id: 0
-  name: 
+  name: Apple
   sprite: {fileID: 0}
-  stackSize: 0
-  description: 
+  stackSize: 5
+  description: japco
   effects: []

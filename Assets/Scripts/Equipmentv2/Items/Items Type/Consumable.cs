@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class Consumable : Itemm
 {
-    public override ItemType type => ItemType.Consumable;
     public List<ItemEffect> effects;
     public void Use(GameObject target)
     {

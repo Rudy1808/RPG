@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class Weaponn : Itemm
 {
-    public override ItemType type => ItemType.Weapon;
     public float attack;
 }
