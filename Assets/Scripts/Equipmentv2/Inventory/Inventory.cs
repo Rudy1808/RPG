@@ -6,31 +6,31 @@ public class Inventory : MonoBehaviour
     //Sloty
 
     public int slotListLimit = 30;
-    public List<InventorySlot> slotList;
+    public List<Slot> slotList;
 
     
     public int accesoryListLimit = 3;
-    public List<InventorySlot> accesoryList;
+    public List<Slot> accesoryList;
 
-    public InventorySlot WeaponSlot = null;
-    public InventorySlot ArmorSlot = null;
+    public Slot WeaponSlot = null;
+    public Slot ArmorSlot = null;
 
     public Inventory()
     {
-        slotList = new List<InventorySlot>(new InventorySlot[slotListLimit]);
-        accesoryList = new List<InventorySlot>(new InventorySlot[accesoryListLimit]);
+        slotList = new List<Slot>(new Slot[slotListLimit]);
+        accesoryList = new List<Slot>(new Slot[accesoryListLimit]);
     }
     
-    public void AddItem(InventorySlot itemToAdd)
+    public void AddItem(Slot slotToAdd)
     {
         //je¿eli item ma stack size 1 to szukamy wolnego slotu na dodanie go
-        if (itemToAdd.item.stackSize == 1)
+        if (slotToAdd.item.stackSize == 1)
         {
             for (int i = 0; i < slotList.Count; i++)
             {
                 if (slotList[i] == null)
                 {
-                    slotList[i] = itemToAdd;
+                    slotList[i] = slotToAdd;
                     return;
                 }
             }
@@ -41,13 +41,13 @@ public class Inventory : MonoBehaviour
             for (int i = 0; i < slotList.Count; i++)
             {
                
-                if (slotList[i] != null && slotList[i].item.name == itemToAdd.item.name)
+                if (slotList[i] != null && slotList[i].item.name == slotToAdd.item.name)
                 {
-                    while(slotList[i].amount <= itemToAdd.item.stackSize)
+                    while(slotList[i].amount <= slotToAdd.item.stackSize)
                     {
                         slotList[i].amount++;
-                        itemToAdd.amount--;
-                        if(itemToAdd.amount == 0)
+                        slotToAdd.amount--;
+                        if(slotToAdd.amount == 0)
                         {
                             return;
                         }
@@ -58,13 +58,13 @@ public class Inventory : MonoBehaviour
             {
                 if (slotList[i] == null)
                 {
-                    slotList[i] = itemToAdd;
+                    slotList[i] = slotToAdd;
                     return;
                 }
             }
         }
         //je¿eli nie uda³o siê dodaæ itemu to... nie wiem co. na przysz³oœæ mo¿na zmieniæ metode na typ bool i obs³u¿yæ nieuzupe³nienie slota z zewn¹trz.
-        Debug.Log($"Nie uda³o siê dodaæ itema. (iloœæ niedodanwgo itema to: {itemToAdd.amount})");
+        Debug.Log($"Nie uda³o siê dodaæ itema o nazwie {slotToAdd.item.name} (iloœæ niedodanwgo itema to: {slotToAdd.amount})");
     }
 
     //przeci¹¿enie funkcji. pozwala na dodawanie itemów z poza slotów (skrzyñ) np. podnoszenie z ziemi lub kupowanie.
@@ -77,7 +77,7 @@ public class Inventory : MonoBehaviour
             {
                 if (slotList[i] == null)
                 {
-                    slotList[i] = new InventorySlot(itemToAdd, 1);
+                    slotList[i] = new Slot(itemToAdd, 1);
                     amount--;
                 }
                 if (amount == 0)
@@ -93,7 +93,7 @@ public class Inventory : MonoBehaviour
 
                 if (slotList[i] != null && slotList[i].item.name == itemToAdd.name)
                 {
-                    while (slotList[i].amount <= itemToAdd.stackSize)
+                    while (slotList[i].amount < itemToAdd.stackSize)
                     {
                         slotList[i].amount++;
                         amount--;
@@ -110,12 +110,12 @@ public class Inventory : MonoBehaviour
                 {
                     if (itemToAdd.stackSize <= amount)
                     {
-                        slotList[i] = new InventorySlot(itemToAdd, itemToAdd.stackSize);
+                        slotList[i] = new Slot(itemToAdd, itemToAdd.stackSize);
                         amount -= itemToAdd.stackSize;
                     }
                     else
                     {
-                        slotList[i] = new InventorySlot(itemToAdd, amount);
+                        slotList[i] = new Slot(itemToAdd, amount);
                         return;
                     }
                 }
@@ -125,26 +125,66 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        Debug.Log($"Nie uda³o siê dodaæ itema. (iloœæ niedodanwgo itema to: {amount})");
+        Debug.Log($"Nie uda³o siê dodaæ itema o nazwie {itemToAdd.name} (iloœæ niedodanwgo itema to: {amount}).");
+    }
+    public void AddItem(Itemm itemToAdd)
+    {
+        if (itemToAdd.stackSize == 1)
+        {
+            for (int i = 0; i < slotList.Count; i++)
+            {
+                if (slotList[i] == null)
+                {
+                    slotList[i] = new Slot(itemToAdd, 1);
+                    return;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < slotList.Count; i++)
+            {
+                if (slotList[i] != null && slotList[i].item.name == itemToAdd.name && slotList[i].amount < itemToAdd.stackSize)
+                {
+                    slotList[i].amount++;
+                    return;
+                }
+            }
+            for (int i = 0; i < slotList.Count; i++)
+            {
+                if (slotList[i] == null)
+                {
+                    slotList[i] = new Slot(itemToAdd, 1);
+                    return;
+                }
+            }
+        }
+        Debug.Log($"Nie uda³o siê dodaæ itema o nazwie: {itemToAdd.name}.");
     }
 
-    public void RemoveItem(InventorySlot item)
+    public void RemoveItem(Slot item)
     {
         slotList.Remove(item);
     }
     public void DescribeInventory()
     {
-        foreach(InventorySlot item in slotList)
+        foreach(Slot item in slotList)
         {
             if(item != null)
-            Debug.Log(item.item.name);
+            Debug.Log($"nazwa: {item.item.name}, iloœæ: {item.amount}");
         }
     }
     private void Start()
     {
 
-        //InventorySlot slot = new InventorySlot(ItemDatabase.getItemByName("Apple"), 5);
+        Slot slot = new Slot(ItemDatabase.getItemByName("Apple"), 4);
+        AddItem(slot);
         AddItem(ItemDatabase.getItemByName("Apple"), 120);
+        AddItem(ItemDatabase.getItemByName("Apple"));
+        AddItem(ItemDatabase.getItemByName("Apple"));
+        AddItem(ItemDatabase.getItemByName("Apple"));
+        AddItem(ItemDatabase.getItemByName("Apple"));
+        AddItem(ItemDatabase.getItemByName("Apple"));
         DescribeInventory();
     }
 }
